@@ -1,0 +1,49 @@
+<h1>To Do</h1>
+<form [formGroup]="form" (submit)="submitForm()">
+    <table>
+        <tr>
+            <td>Description: </td>
+            <td>
+                <input type="text" name="description"
+                    formControlName="description" placeholder="Enter your description">
+                <span *ngIf="form.get('description')?.hasError('minlength')">
+                    Your description must contain at least 5 characters
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Priority: </td>
+            <td>
+                <label for="high">
+                    <input type="radio" name="priority"
+                        formControlName="priority" id="high" value="HIGH">
+                    High
+                </label>
+                <label for="medium">
+                    <input type="radio" name="priority"
+                        formControlName="priority" id="medium" value="MEDIUM">
+                    Medium
+                </label>
+                <label for="low">
+                    <input type="radio" name="priority"
+                        formControlName="priority" id="low" value="LOW">
+                    Low
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>Due date: </td>
+            <td>
+                <input type="date" name="dueDate"
+                    formControlName="dueDate">
+                <span *ngIf="form.get('dueDate')?.hasError('futureDate')">
+                    Your due date must be after today's date
+                </span>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit" [disabled]="form.invalid">
+        {{ editTask ? 'Update' : 'Add '}}
+    </button>
+</form>

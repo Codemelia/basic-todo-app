@@ -1,0 +1,22 @@
+<h1>Tasks</h1>
+<table>
+    <thead>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Due Date</th>
+        <th colspan="2">Functions</th>
+    </thead>
+    <tbody>
+        @for (t of taskArray; let i = $index; track i) {
+            <tr>
+                <td>{{ t.description }}</td>
+                <td>{{ t.priority }}</td>
+                <td>{{ t.dueDate }}</td>
+                <td><button type="button" 
+                    (click)="editTask(t.description, t.priority, t.dueDate)">Edit</button></td>
+                <td><button type="button" 
+                    (click)="deleteTask(t.description, t.priority, t.dueDate)">Delete</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
