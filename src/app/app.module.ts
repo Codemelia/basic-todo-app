@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './components/todo.component';
 import { TasksComponent } from './components/tasks.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: AppComponent }
+]
 
 @NgModule({
   declarations: [
@@ -14,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
